@@ -7,6 +7,7 @@
 
 ```diff
  - Install Geth to create private blockchain, activate your own account and connected to MetaMask
+ + text in green
 ```
 
 ![localhost_8848_messageBoard html](https://user-images.githubusercontent.com/79236612/175804822-4ecded98-a13b-44db-86bc-8471007ba435.png)

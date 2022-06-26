@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>410821312_Final</title>
+    <script src="js/web3.min.js"></script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
+		body {background-color: #e7e7e7;}
+		.center{
+			text-align: center;
+		}
+		h2{
+			font-family: "Poppins", sans-serif;
+		}
+		h3{
+			font-family: "Poppins", sans-serif;
+		}
+		p{
+			/*color: #eb6060;*/
+			color: #D27355;
+			display: inline;
+		}
+		.bloc{
+			padding: 10px 20px;
+			background: #FFFFFF;
+			border-radius: 20px;
+			width: 14vw;
+			height: 1vw;
+			border:none
+			
+		}
+		.bloc2{
+			background: rgba(170, 170, 180, 0.4);
+			border-radius: 20px;
+			width: 6vw;
+			height: 1.8vw;
+			border-width:0.3vmin;
+		}
+		.bloc3{
+			background: #fffaf4;
+			border-radius: 20px;
+			width: 8vw;
+			height: 2vw;
+			font-size: large;
+			border-width:0.3vmin;
+
+		}
+		.bloc4{
+			margin-left: 30%;
+    		margin-right: 30%;
+			border-radius: 20px;
+			width: 40vw;
+			height: 20vw;
+			font-size: large;
+		}
+		.title{
+		/*border-style:double;*/
+		border-width:1.5vmin;
+		font-size: 13vmin;
+		font-family: 'Poppins', sans-serif;
+		/*background-color: #8592a2;*/
+		border-radius: 20px;
+		color: #8592a2;
+		}
+		.title2{
+		/*border-style:double;*/
+		border-width:1.5vmin;
+		font-size: 13vmin;
+		font-family: 'Poppins', sans-serif;
+		/*background-color: #8592a2;*/
+		border-radius: 20px;
+		color: #2F4D47;
+		}
+		hr{
+			background-color: #000000;
+			height: 1px;
+		}
+		
+
+    
+}
+		</style>
+</head>
+<body class = "center">
+	<div class = "title "style = "font-weight: bold;font-size: 10vmin;font-family: 'Poppins', sans-serif;border-radius: 20px;">Get Coupon!</div>
+	<div class = "title2 "style = "font-weight: bold;font-size: 4vmin;font-family: 'Poppins', sans-serif;border-radius: 20px;">免費獲取品牌折價券!</div>
+	<br>
+	<br>
+
+	<img src="pchomepretty.jpg" style="width:200px; padding-right: 200px;"/>
+	<img src="ama.jfif" style="width:200px;padding-right: 200px;"/>
+	<img src="ebay.jpg" style="width:200px"/>
+	<br>
+	<h2 style="display: inline-block; ">1剩餘：<p id="object1"></p></h2>
+	<h2 style="display: inline-block;margin-right:290px; margin-left:290px">2剩餘：<p id="object2"></p></h2>
+	<h2 style="display: inline-block;">3剩餘：<p id="object3"></p></h2>
+	<br>
+	<br>
+	<img src="shopeee.png" style="width:200px; padding-right: 200px;"/>
+	<img src="tao.jpg" style="width:200px; padding-right: 200px;"/>
+	<img src="wal.jpg" style="width:200px"/>
+	<br>
+
+	<h2 style="display: inline-block;">4剩餘：<p id="object4"></p></h2>
+	<h2 style="display: inline-block;margin-right:290px; margin-left:290px">5剩餘：<p id="object5"></p></h2>
+	<h2 style="display: inline-block;">6剩餘：<p id="object6"></p></h2>
+	
+	<br>
+	<br>
+	<br>
+	
+	<input class = "bloc" type="text" id="getwhich" placeholder="優惠碼編號">
+	&ensp;
+    <input class = "bloc2" type="button" id="send" value="送出">
+	<h2>優惠碼是：<p style = "color: rgb(55, 134, 187)"id="content"></p></h2>
+	<br>
+	<br>
+	<input class = "bloc" type="text" id="donate" placeholder="donate金額">
+	&ensp;
+    <input class = "bloc2" type="button" id="pay" value="小額捐款">
+	<br>
+	<br>
+	<br>
+	<br>
+	<hr>
+	<h3>410821312 張宸瑋 區塊鏈原理與應用 期末作業</h3>
+    <script> 
+        var web3 = new Web3(window.ethereum)
+        window.ethereum.enable().catch(error => {
+             // User denied account access
+             console.log(error)
+        });
+        
+        var Contract;
+        var abi =[
+	{
+		"inputs": [
+			{
+				"internalType": "int256",
+				"name": "input",
+				"type": "int256"
+			}
+		],
+		"name": "getwhich",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "pay",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "message",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "no1",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "no2",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "no3",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "no4",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "no5",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "no6",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "no7",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "object1",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "object2",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "object3",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "object4",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "object5",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "object6",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "record",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "show1",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "show2",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "show3",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "show4",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "show5",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "show6",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "showcoupon",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "content",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+		
+        var address = "0x301a2A34f5ba24E6F67A0F0cFf7a745f294926B6";
+		async function init(){
+            Contract = await new web3.eth.Contract(abi,address);
+            Contract.methods.show1().call()
+            .then(function(data){
+                document.getElementById('object1').textContent = data;
+            })
+			Contract.methods.show2().call()
+            .then(function(data){
+                document.getElementById('object2').textContent = data;
+            })
+			Contract.methods.show3().call()
+            .then(function(data){
+                document.getElementById('object3').textContent = data;
+            })
+			Contract.methods.show4().call()
+            .then(function(data){
+                document.getElementById('object4').textContent = data;
+            })
+			Contract.methods.show5().call()
+            .then(function(data){
+                document.getElementById('object5').textContent = data;
+            })
+			Contract.methods.show6().call()
+            .then(function(data){
+                document.getElementById('object6').textContent = data;
+            })
+			Contract.methods.showcoupon().call()
+            .then(function(data){
+                document.getElementById('content').textContent = data;
+            })
+        }
+		init();
+		async function send(){
+            var accounts = await web3.eth.getAccounts();
+            var int = document.getElementById('getwhich').value;
+            Contract.methods.getwhich(int)
+            .send({from:accounts[0]})
+            .then(function(data){
+                console.log(data);
+				location.reload();
+            })
+        
+        }
+		
+		async function pay(){
+            var accounts = await web3.eth.getAccounts();
+            var str = document.getElementById('donate').value;
+			window.alert("您將捐贈:  "+str+"  ETH");
+            Contract.methods.pay()
+            .send({from:accounts[0], value:web3.utils.toWei(str,"ether")})
+            .then(function(data){
+                console.log(data);
+            })
+        
+        }
+		document.getElementById('send').addEventListener('click',send);
+		document.getElementById('pay').addEventListener('click',pay);
+		/*
+        async function init(){
+            Contract = await new web3.eth.Contract(abi,address);
+            Contract.methods.showMessage().call()
+            .then(function(data){
+                document.getElementById('message').textContent = data;
+            })
+			Contract.methods.showtotal().call()
+            .then(function(data){
+                document.getElementById('person').textContent = data;
+            })
+			Contract.methods.getBalance().call()
+            .then(function(data){
+                document.getElementById('address(this).balance').textContent = data/1000000000000000000;
+            })
+        }
+
+        init(); 
+        async function send(){
+            var accounts = await web3.eth.getAccounts();
+            var str = document.getElementById('editMessage').value;
+            Contract.methods.editMessage(str)
+            .send({from:accounts[0]})
+            .then(function(data){
+                console.log(data);
+            })
+        
+        }
+		async function Transfer(){
+			window.alert("在MetaMask按下確認後，將會轉移1ETH到您的錢包");
+            var accounts = await web3.eth.getAccounts();
+			var amount = "1"
+            Contract.methods.Transfer()
+			.send({from:accounts[0]})
+			.then(function(data){
+                console.log(data);
+            })
+            
+        
+        }
+
+        
+        async function pay(){
+            var accounts = await web3.eth.getAccounts();
+            var str = document.getElementById('donate').value;
+            Contract.methods.pay()
+            .send({from:accounts[0], value:web3.utils.toWei(str,"ether")})
+            .then(function(data){
+                console.log(data);
+            })
+        
+        }
+        
+        document.getElementById('send').addEventListener('click',send);
+        document.getElementById('pay').addEventListener('click',pay);
+		document.getElementById('Transfer').addEventListener('click',Transfer);
+		*/
+    </script>
+</body>
+</html>

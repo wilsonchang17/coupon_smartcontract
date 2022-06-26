@@ -5,7 +5,7 @@
 - Record the amount of remaining coupon
 - Accept donation to the contract
 
-### **Install Geth to create private blockchain, activate your own account and connected to MetaMask**
+## **Install Geth to create private blockchain, activate your own account and connected to MetaMask**
 
 
 

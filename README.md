@@ -10,3 +10,4 @@
 
 
 ![localhost_8848_messageBoard html](https://user-images.githubusercontent.com/79236612/175804822-4ecded98-a13b-44db-86bc-8471007ba435.png)
+![image](https://user-images.githubusercontent.com/79236612/175805089-8bb7b6c0-2441-4be8-8c9d-be7c912bf51a.png)

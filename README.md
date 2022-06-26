@@ -6,7 +6,7 @@
 - Accept donation to the contract
 
 ```diff
- - @@Install Geth to create private blockchain, activate your own account and connected to MetaMask@@
+@@Install Geth to create private blockchain, activate your own account and connected to MetaMask@@
 
 ```
 

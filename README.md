@@ -6,7 +6,8 @@
 - Accept donation to the contract
 
 ## **Install Geth to create private blockchain, activate your own account and connected to MetaMask**
-
+- Geth version 1.9.25
+- Get Metamask for your chrome ![Click](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)
 
 
 ![localhost_8848_messageBoard html](https://user-images.githubusercontent.com/79236612/175804822-4ecded98-a13b-44db-86bc-8471007ba435.png)

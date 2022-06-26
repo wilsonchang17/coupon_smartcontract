@@ -3,7 +3,7 @@
 ### What can this smart contract do?
 - Show the company's coupon based on what you choosed
 - Record the amount of remaining coupon
-- Accept donation to the contract
+- Accept donation to this contract
 
 ### **Install Geth to create private blockchain, activate your own account and connected to MetaMask**
 - Geth version 1.9.25
